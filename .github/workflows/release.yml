@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: 2024-2025 Joe Pitt
+#
+# SPDX-License-Identifier: GPL-3.0-only
+name: Release to PyPI
+on:
+  release:
+    types: [published]
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: pypi
+    steps:
+    - uses: actions/checkout@v5
+      name: Checkout Project
+    - uses: actions/setup-python@v6
+      name: Setup Python
+      with:
+        python-version: '3.x'
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip setuptools
+        pip install build
+    - name: Build
+      run: python -m build
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
