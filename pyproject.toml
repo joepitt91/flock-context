@@ -7,7 +7,7 @@ name = "flock-context-manager"
 description = "A flock implementation using Python's context manager."
 version = "1.0.0"
 readme = "README.md"
-requires-python = "~=3.8"
+requires-python = "~=3.9"
 license = "GPL-3.0-only"
 authors = [
     {name = "Joe Pitt", email = "joe.pitt@joepitt.co.uk"},
